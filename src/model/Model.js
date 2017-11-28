@@ -176,7 +176,7 @@ class Model {
                 const pos = parent.getChildren().indexOf(tabNode);
 
                 if (parent.getType() === BorderNode.TYPE) {
-                    if (parent.getSelected() == pos) {
+                    if (parent.getSelected() == pos && typeof action.custom === 'undefined' || action.custom.toLowerCase() !== 'radio') {
                         parent._setSelected(-1);
                     }
                     else {

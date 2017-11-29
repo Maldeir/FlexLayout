@@ -176,7 +176,7 @@ class Model {
                 const pos = parent.getChildren().indexOf(tabNode);
 
                 if (parent.getType() === BorderNode.TYPE) {
-                    if (parent.getSelected() == pos && typeof action.custom === 'undefined' || action.custom.toLowerCase() !== 'radio') {
+                    if (parent.getSelected() == pos && parent.getAttribute('custom') !== 'radio') {
                         parent._setSelected(-1);
                     }
                     else {
@@ -287,6 +287,7 @@ class Model {
      * @returns {Model} a new Model object
      */
     static fromJson(json) {
+      console.log("first call.")
         const model = new Model();
         attributeDefinitions.fromJson(json.global, model._attributes);
 

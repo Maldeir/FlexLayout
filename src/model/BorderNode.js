@@ -20,8 +20,13 @@ class BorderNode extends Node {
         this._drawChildren = [];
         this._attributes["id"] = "border_" + location.getName();
         this._attributes["splitterSize"] = typeof json.splitterSize !== "undefined" ? json.splitterSize : this._model.getSplitterSize();
+        this._attributes["custom"] = typeof json.custom !== "undefined" ? json.custom : null;
         attributeDefinitions.fromJson(json, this._attributes);
         model._addNode(this);
+    }
+
+    getAttribute(attr) {
+        return this._attributes[attr];
     }
 
     getLocation() {

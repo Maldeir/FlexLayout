@@ -21,6 +21,10 @@
     z-index: 1000;
 }
 
+.flexlayout__internal__border__boder {
+    border-color:  black;
+}
+
 .flexlayout__outline_rect {
     position: absolute;
     cursor: move;

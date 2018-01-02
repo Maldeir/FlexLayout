@@ -40,6 +40,9 @@ class Tab extends React.Component {
         const style = node._styleWithPosition({
             display: this.props.selected ? "block" : "none"
         });
+        
+        let externalborders;
+        let flag = false;
 
         if (this.props.node.getParent().isMaximized()) {
             style.zIndex = 100;
@@ -49,11 +52,24 @@ class Tab extends React.Component {
         if (this.state.renderComponent) {
             child = this.props.factory(node);
         }
+        if(node && node._parent && node._parent._attributes && node._parent._attributes.splitterSize){
+            flag = true;
+            let splitterSize = node._parent._attributes.splitterSize;
+            let divHeight = parseFloat(style.height.split('px')[0]) - 2 * splitterSize;
+            divHeight = (divHeight)?divHeight:'100%';
+            externalborders = {
+                borderStyle: 'solid',
+                borderWidth: `${splitterSize}px 0 ${splitterSize}px 0`,
+                height: `${divHeight}px`
+            }
+        }
+        child = (flag)?<div className="flexlayout__internal__border__boder" style={externalborders}>{child}</div>:child;
 
         return <div className="flexlayout__tab"
                     onMouseDown={this.onMouseDown.bind(this)}
                     onTouchStart={this.onMouseDown.bind(this)}
-                    style={style}>{child}
+                    style={style}>
+                    {child}
         </div>;
     }
 }

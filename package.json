@@ -13,10 +13,6 @@
   "author": "Caplin Systems Ltd",
   "repository": "https://github.com/caplin/FlexLayout",
   "license": "ISC",
-  "peerDependencies": {
-    "react": "^15.6.1",
-    "react-dom": "^15.6.1"
-  },
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
@@ -26,11 +22,11 @@
     "cross-env": "^1.0.7",
     "jasmine": "^2.4.1",
     "jsdoc-webpack-plugin": "0.0.1",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
     "webpack": "^1.12.14"
   },
   "dependencies": {
-    "prop-types": "^15.5.10",
-    "react": "^15.6.1",
-    "react-dom": "^15.6.1"
+    "prop-types": "^15.5.10"
   }
 }

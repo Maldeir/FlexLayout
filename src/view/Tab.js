@@ -55,12 +55,12 @@ class Tab extends React.Component {
         if(node && node._parent && node._parent._attributes && node._parent._attributes.splitterSize){
             flag = true;
             let splitterSize = node._parent._attributes.splitterSize;
-            let divHeight = parseFloat(style.height.split('px')[0]) - 2 * splitterSize;
-            divHeight = (divHeight)?divHeight:'100%';
+            let divHeight = parseFloat(style.height.split('px')[0]);
+            divHeight = (divHeight)?`${divHeight}px`:'100%';
             externalborders = {
                 borderStyle: 'solid',
                 borderWidth: `${splitterSize}px 0 ${splitterSize}px 0`,
-                height: `${divHeight}px`
+                height: divHeight
             }
         }
         child = (flag)?<div className="flexlayout__internal__border__boder" style={externalborders}>{child}</div>:child;

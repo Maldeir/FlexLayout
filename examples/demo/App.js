@@ -43,6 +43,7 @@ let layout = {
     { 
       "type": "border", 
       "location": "left", 
+      "splitterSize": 35,
       "children": [ 
        { 
          "type": "tab", 

@@ -40,21 +40,53 @@ let layout = {
     ] 
   },
   borders: [
-    {
-      type: "border",
-      splitterSize: 3,
-      location: "left",
-      children: [
-        {
-          type: "tab",
-          enableClose: false,
-          name: "Navigation",
-          component: "grid",
-          id: "#24"
-        }
-      ]
-    }
-  ]
+    { 
+      "type": "border", 
+      "location": "left", 
+      "children": [ 
+       { 
+         "type": "tab", 
+         "enableClose":false, 
+         "name": "Navigation", 
+         "component": "grid", 
+         "id": "#24" 
+       } 
+     ] 
+   }, 
+   { 
+       "type": "border", 
+      "location": "right", 
+     "children": [ 
+       { 
+         "type": "tab", 
+         "enableClose":false, 
+         "name": "Options", 
+         "component": "grid", 
+         "id": "#3" 
+       } 
+     ] 
+   }, 
+   { 
+       "type": "border", 
+     "location": "bottom", 
+     "children": [ 
+       { 
+         "type": "tab", 
+         "enableClose":false, 
+         "name": "Activity Blotter", 
+         "component": "grid", 
+         "id": "#2" 
+       }, 
+       { 
+         "type": "tab", 
+         "enableClose":false, 
+         "name": "Execution Blotter", 
+         "component": "grid", 
+         "id": "#1" 
+       } 
+     ] 
+   } 
+ ] 
 };
 
 class App extends React.Component {

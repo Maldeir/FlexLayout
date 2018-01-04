@@ -140,6 +140,8 @@ class Layout extends React.Component {
                     const child = drawChildren[i];
 
                     if (child.getType() === SplitterNode.TYPE) {
+                        splitterComponents.push(<Splitter key={child.getId()+'top'} layout={this} node={child} isBorderTop></Splitter>);
+                        splitterComponents.push(<Splitter key={child.getId()+'bottom'} layout={this} node={child} isBorderBottom></Splitter>);
                         splitterComponents.push(<Splitter key={child.getId()} layout={this} node={child}></Splitter>);
                     }
                     else if (child.getType() === TabNode.TYPE) {

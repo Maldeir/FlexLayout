@@ -87,9 +87,27 @@ class Splitter extends React.Component {
                 cursor: this.props.node.getOrientation() === Orientation.HORZ ? "ns-resize" : "ew-resize"
             }
         );
+        if(this.props.isBorderTop || this.props.isBorderBottom){
+            let location = node.getParent().getLocation().getName();
+            let barSize = node.getParent().getAttribute('barSize') || 25;
+            let left = (location === 'left')?(barSize):style.left;
+            let width = (location === 'left')?
+                (parseFloat(style.left.split('px')[0]) - barSize):
+                (node.getParent().getTabHeaderRect().x - node.getRect().x);
 
-        return <div style={style} onTouchStart={this.onMouseDown.bind(this)} onMouseDown={this.onMouseDown.bind(this)}
+            let newStyle = {
+                height: style.width,
+                position: 'absolute',
+                top: this.props.isBorderTop?style.top:(parseFloat(style.height.split('px')[0]) - parseFloat(style.width.split('px')[0])),
+                left: left,
+                width: width
+            };
+            return <div style={newStyle} className="flexlayout__splitter"></div>
+            
+        }else{
+            return <div style={style} onTouchStart={this.onMouseDown.bind(this)} onMouseDown={this.onMouseDown.bind(this)}
                     className="flexlayout__splitter"></div>;
+        }
     }
 }
 

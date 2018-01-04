@@ -6,44 +6,44 @@ let layout = {
   global: {
     splitterSize: 10
   },
-  layout: { 
-    type: "row", 
-    id: "#4", 
-    children: [ 
-      { 
-        type: "tabset", 
-        weight: 12.5, 
-        active: true, 
-        id: "#5", 
-        children: [ 
-          { 
-            type: "tab", 
-            name: "FX", 
-            component: "grid", 
-            id: "#6" 
-          } 
-        ] 
-      }, 
-      { 
-        type: "tabset", 
-        weight: 25, 
-        id: "#7", 
-        children: [ 
-          { 
-            type: "tab", 
-            name: "FI", 
-            component: "grid", 
-            id: "#8" 
-          } 
-        ] 
-      } 
-    ] 
+  layout: {  
+    type: "row",  
+    id: "#4",  
+    children: [  
+      {  
+        type: "tabset",  
+        weight: 12.5,  
+        active: true,  
+        id: "#5",  
+        children: [  
+          {  
+            type: "tab",  
+            name: "FX",  
+            component: "grid",  
+            id: "#6"  
+          }  
+        ]  
+      },  
+      {  
+        type: "tabset",  
+        weight: 25,  
+        id: "#7",  
+        children: [  
+          {  
+            type: "tab",  
+            name: "FI",  
+            component: "grid",  
+            id: "#8"  
+          }  
+        ]  
+      }  
+    ]  
   },
   borders: [
     { 
       "type": "border", 
       "location": "left", 
-      "splitterSize": 35,
+      "splitterSize": 2,
       "children": [ 
        { 
          "type": "tab", 
@@ -53,40 +53,21 @@ let layout = {
          "id": "#24" 
        } 
      ] 
-   }, 
+   },
    { 
-       "type": "border", 
-      "location": "right", 
-     "children": [ 
-       { 
-         "type": "tab", 
-         "enableClose":false, 
-         "name": "Options", 
-         "component": "grid", 
-         "id": "#3" 
-       } 
-     ] 
-   }, 
-   { 
-       "type": "border", 
-     "location": "bottom", 
-     "children": [ 
-       { 
-         "type": "tab", 
-         "enableClose":false, 
-         "name": "Activity Blotter", 
-         "component": "grid", 
-         "id": "#2" 
-       }, 
-       { 
-         "type": "tab", 
-         "enableClose":false, 
-         "name": "Execution Blotter", 
-         "component": "grid", 
-         "id": "#1" 
-       } 
-     ] 
-   } 
+    "type": "border", 
+    "location": "right", 
+    "splitterSize": 6,
+    "children": [ 
+     { 
+       "type": "tab", 
+       "enableClose":false, 
+       "name": "NavigationRight", 
+       "component": "grid", 
+       "id": "#25" 
+     } 
+   ] 
+ }
  ] 
 };
 
@@ -137,22 +118,22 @@ class App extends React.Component {
   }
 
   factory(node) {
-    return <div>node....{node._attributes.name}</div>;
+    if(node._attributes.name === 'Navigation'){
+      return <div className={node._attributes.name}>node....{node._attributes.name}</div>;
+    }else{
+      return <div>node....{node._attributes.name}</div>;
+    }
+    
   }
 
   render() {
     return (
-      <div className="app">
-        <div className="contents">
-          <FlexLayout.Layout
-            ref="layout"
-            model={this.state.model}
-            onAction={this.onAction}
-            factory={this.factory.bind(this)}
-          />
-        </div>
-      </div>
-    );
+    <FlexLayout.Layout
+      ref="layout"
+      model={this.state.model}
+      onAction={this.onAction}
+      factory={this.factory.bind(this)}/>
+    )
   }
 }
 

@@ -38,7 +38,7 @@ class Tab extends React.Component {
     render() {
         const node = this.props.node;
         const style = node._styleWithPosition({
-            display: this.props.selected ? "block" : "none"
+            visibility: this.props.selected ? "visible" : "hidden"
         });
         
         if (this.props.node.getParent().isMaximized()) {
